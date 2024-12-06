@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    tools { nodejs 'node' }
+    stages {
+        stage('Cloning Repo') {
+            steps {
+                script {
+                    git branch: 'main',
+                        url: 'https://github.com/Mischa2005/M324_Mischa'
+                }
+            }
+        }
+        stage('Install jest-cli') {
+            steps {
+                sh 'npm install jest-cli -g'
+            }
+        }
+    }
+}
